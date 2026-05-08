@@ -15,13 +15,12 @@ const btnLogout = document.getElementById("btn-logout")
 document.addEventListener('DOMContentLoaded', () => {
     seedAdmin();
 
-    const user = getUser();
+    const user: IUser | null = getUser();
     if (user)  {
-        const parsedUser: IUser = JSON.parse(user);
-        displaySessionNotice(true, parsedUser.email );
+        displaySessionNotice(true, user.email );
        
         btnContinue?.addEventListener("click", ()=>{
-            rolRedirect(parsedUser.role);
+            rolRedirect(user.role);
         })
          btnLogout?.addEventListener("click", ()=>{
             logout();

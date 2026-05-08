@@ -1,1 +1,33 @@
-//vista del carrito 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Mi Carrito | Food Store</title>
+    <link rel="stylesheet" href="../../../style.css">
+</head>
+<body class="cart-body">
+    <nav class="navbar">
+        <div class="logo" onclick="location.href='/src/pages/store/home/home.html'" style="cursor:pointer">FoodStore</div>
+        <div class="nav-actions">
+            <button onclick="location.href='/src/pages/store/home/home.html'">Volver a la Tienda</button>
+        </div>
+    </nav>
+
+    <main class="cart-container">
+        <h1>Tu Pedido 🛒</h1>
+        
+        <section id="cart-content">
+            </section>
+
+        <div id="cart-footer" class="cart-footer" style="display: none;">
+            <div class="total-section">
+                <h2>Total: <span id="cart-total">$0.00</span></h2>
+            </div>
+            <button class="btn-checkout" id="btn-checkout">Finalizar Compra</button>
+        </div>
+    </main>
+
+    <script type="module" src="./cart.ts"></script>
+</body>
+</html>
