@@ -1,30 +1,38 @@
 import type { IUser } from "../../../types/IUser";
 import type { Rol } from "../../../types/Rol";
-import { navigate } from "../../../utils/navigate";
+import { rolRedirect } from "../../../utils/auth";
+import { getUsers, loginUser } from "../../../utils/localStorage";
 
 const form = document.getElementById("form") as HTMLFormElement;
 const inputEmail = document.getElementById("email") as HTMLInputElement;
-//const inputPassword = document.getElementById("password") as HTMLInputElement;
-const selectRol = document.getElementById("rol") as HTMLSelectElement;
+const inputPassword = document.getElementById("password") as HTMLInputElement;
+
 
 form.addEventListener("submit", (e: SubmitEvent) => {
   e.preventDefault();
   const valueEmail = inputEmail.value;
-  //const valuePassword = inputPassword.value;
-  const valueRol = selectRol.value as Rol;
+  const valuePassword = inputPassword.value;
 
-  if (valueRol === "admin") {
-    navigate("/src/pages/admin/home/home.html");
-  } else if (valueRol === "client") {
-    navigate("/src/pages/client/home/home.html");
+  const users = getUsers();
+  const usuarioExistente = users.find((u) => u.email === valueEmail);
+
+  if (!usuarioExistente) {
+      alert("El email ingresado no existe.")
+      inputPassword.value = "";
+      return; 
   }
 
-  const user: IUser = {
-    email: valueEmail,
-    role: valueRol,
-    loggedIn: true,
-  };
+  if (usuarioExistente.password === valuePassword) {
+      const user: IUser = {
+        email: usuarioExistente.email,
+        role: usuarioExistente.role as Rol,
+        loggedIn: true,
+      };
 
-  const parseUser = JSON.stringify(user);
-  localStorage.setItem("userData", parseUser);
+      loginUser(user);
+      rolRedirect(user.role);
+  } else {
+      alert("Contraseña incorrecta. Por favor, intenta de nuevo.");
+      inputPassword.value = "";
+  }
 });

@@ -2,16 +2,35 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vite + TS</title>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/style.css">
+    <title>tp-4</title>
 </head>
 
-<body>
-  <script>
-    window.location.href = 'src/pages/auth/login/login.html'
-  </script>
+<body class="index-body">
+    <div id="app">
+        <main class="landing-container">
+            <div class="section">
+                <header>
+                    <h1>Food Store 🍔</h1>
+                    <p>La mejor comida artesanal a un click de distancia.</p>
+                </header>
+
+                <a class="btn" href="/src/pages/store/home/home.html" class="btn-hero">Explorar la Tienda 🚀</a>
+
+                <div class="auth-shortcuts">
+                    <p>¿Ya tenés cuenta?</p>
+                    <a href="/src/pages/auth/login/login.html">Iniciar Sesión</a>
+                    <span>|</span>
+                    <a href="/src/pages/auth/registro/registro.html">Registrarse</a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
 </body>
 
 </html>
