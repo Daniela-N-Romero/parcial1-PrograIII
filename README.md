@@ -45,11 +45,11 @@ El mecanismo es simple y se gestiona desde el código TypeScript en la carpeta `
 
 ## 🏗️ Seed Data y Roles de Usuario
 
-# Registro de Usuarios:
+### Registro de Usuarios:
 
 Solo Clientes: El formulario de registro está diseñado exclusivamente para la creación de perfiles tipo client. Esto asegura que cualquier usuario nuevo tenga acceso al catálogo y al carrito, pero no a las funciones de gestión.
 
-# SeedAdmin (Acceso para Evaluación)
+### SeedAdmin (Acceso para Evaluación)
 
 Para facilitar las pruebas de la plataforma, el sistema cuenta con un SeedAdmin que se inicializa automáticamente en el primer acceso. No es necesario registrarse para probar el rol de administrador. 
 
@@ -87,20 +87,20 @@ Password: password123
 
 ## 🌟 Nuevas Funcionalidades (Parcial 1)
 
-# 🛒 Carrito de Compras con Persistencia
+### 🛒 Carrito de Compras con Persistencia
 
 - Gestión de ítems: Permite agregar productos al carrito evitando duplicados, incrementando la cantidad si el producto ya existe.  
 - Persistencia por Usuario: El carrito se guarda en localStorage utilizando una clave vinculada al email del usuario logueado (cart_email@ejemplo.com), asegurando que cada cliente tenga su propio pedido.  
 - Controles Dinámicos: En la vista del carrito, el usuario puede aumentar o disminuir cantidades y eliminar productos.  
 - Cálculo Automático: La aplicación calcula y muestra en tiempo real el total de la compra basado en los precios y cantidades actuales.  
 
-# 🔍 Catálogo Interactivo
+### 🔍 Catálogo Interactivo
 
 - Búsqueda en Tiempo Real: Campo de búsqueda por nombre que filtra el catálogo dinámicamente y notifica si no hay coincidencias.  
 - Filtrado por Categorías: Menú lateral que permite segmentar los productos por tipo (Pizzas, Hamburguesas, etc.) recuperados dinámicamente.  
 - Validación de Stock: Los productos sin existencdisponibilidad ias (stock: 0) se muestran visualmente deshabilitados para la compra.  
 
-# ⚠️ Seguridad y Limitaciones
+## ⚠️ Seguridad y Limitaciones
 
 - Autenticación Frontend: La lógica de acceso sigue basándose en localStorage. El acceso al carrito y la capacidad de agregar productos está restringido exclusivamente a usuarios con el rol client.
 
