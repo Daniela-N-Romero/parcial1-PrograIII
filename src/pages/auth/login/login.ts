@@ -6,7 +6,8 @@ import { getUsers, loginUser } from "../../../utils/localStorage";
 const form = document.getElementById("form") as HTMLFormElement;
 const inputEmail = document.getElementById("email") as HTMLInputElement;
 const inputPassword = document.getElementById("password") as HTMLInputElement;
-
+const errorUsuario = document.getElementById("error-usuario") as HTMLElement;
+const errorContraseña = document.getElementById("error-contraseña") as HTMLElement;
 
 form.addEventListener("submit", (e: SubmitEvent) => {
   e.preventDefault();
@@ -17,7 +18,7 @@ form.addEventListener("submit", (e: SubmitEvent) => {
   const usuarioExistente = users.find((u) => u.email === valueEmail);
 
   if (!usuarioExistente) {
-      alert("El email ingresado no existe.")
+      errorUsuario.style.display = "block";
       inputPassword.value = "";
       return; 
   }
@@ -32,7 +33,7 @@ form.addEventListener("submit", (e: SubmitEvent) => {
       loginUser(user);
       rolRedirect(user.role);
   } else {
-      alert("Contraseña incorrecta. Por favor, intenta de nuevo.");
+      errorContraseña.style.display = "block";
       inputPassword.value = "";
   }
 });

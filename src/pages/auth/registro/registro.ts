@@ -1,4 +1,5 @@
 import type { IUserStorage } from '../../../types/IUserStorage';
+import { showAlert } from '../../../utils/alert';
 import { rolRedirect } from '../../../utils/auth';
 import { getUsers, loginUser, saveUser } from '../../../utils/localStorage'
 
@@ -31,7 +32,7 @@ form?.addEventListener("submit", (e: SubmitEvent) => {
             saveUser(newUser)
             const { password, id, ...userToLog } = newUser;
             loginUser(userToLog)
-            alert("Usuario Registrado. Redirigiendo al home...")
+            showAlert("Usuario registrado. Redigiendo al inicio...")
             setTimeout(() => rolRedirect(newUser.role), 1500)
         } else {
             errorContraseña.style.display = "block";
