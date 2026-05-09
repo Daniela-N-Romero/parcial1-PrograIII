@@ -105,4 +105,4 @@ Para facilitar las pruebas de la plataforma, el sistema cuenta con un SeedAdmin 
 - Foco en Lógica Frontend: No se implementó conexión con backend ni procesos de checkout reales, centrando la evaluación en la manipulación del DOM y la lógica de negocio en el cliente .
 
 ## 💡 Nota para el docente
-El video de presentación (obligatorio) se encuentra adjunto a este zip o en este enlace: ...
+El video de presentación (obligatorio) se encuentra adjunto a este zip o en este enlace: https://www.youtube.com/watch?v=rYeLAP2WeAs
