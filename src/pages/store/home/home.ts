@@ -4,6 +4,7 @@ import type { Product } from "../../../types/product";
 import { getCategories } from "../../../data/data";
 import { logout } from "../../../utils/auth";
 import { getUser, getCartQuantity, addToCart } from "../../../utils/localStorage";
+import { showAlert } from "../../../utils/alert";
 
 //FUNCIONES PARA RENDERIZAR CONTENIDO DINÁMICO DE LA PÁGINA
 //renderizado de navbar segun estado de autenticación
@@ -115,8 +116,13 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("click", (e) => {
     const target = e.target as HTMLElement;
     if (target.id === "btn-logout") {
-        logout();
-        window.location.href = "/index.html";
+        showAlert("¿Estás seguro que quieres cerrar sesión?", [
+                    { label: "Cancelar", callback: () => {} },
+                    { label: "Cerrar sesión", callback: () => {
+                        logout(); 
+                        window.location.href = "/index.html";
+                    }} 
+                ]);
     }
 });
 
@@ -129,10 +135,15 @@ productsContainer.addEventListener("click", (e) => {
     if (id && user && user.role === "client") {
       addToCart(id);
       updateCartBadge();
-      alert("Producto agregado al carrito");
+      showAlert("Producto agregado al carrito",[
+        { label: "Ver carrito", callback: () => window.location.href = "/src/pages/store/cart/cart.html" },
+        { label: "Seguir comprando", callback: () => {} }
+      ]);
     }else{
-        alert("Tenés que iniciar sesión como cliente para agregar productos al carrito.")
-        //diseñar modal alert personalizado para esto, con opciones de ir a login o registrarse, o cerrar el modal
+        showAlert("Tenés que iniciar sesión como cliente para agregar productos al carrito.", [
+            { label: "Iniciar sesión", callback: () => window.location.href = "/src/pages/auth/login/login.html" },
+            { label: "Registrarse", callback: () => window.location.href = "/src/pages/auth/registro/registro.html" }
+        ]);
     }
   }
 });

@@ -1,4 +1,5 @@
 import { PRODUCTS } from "../../../data/data";
+import { showAlert } from "../../../utils/alert";
 import { getCart, removeFromCart, getUser, addToCart, decreaseQuantity } from "../../../utils/localStorage";
 
 const cartContent = document.getElementById("cart-content") as HTMLElement;
@@ -92,8 +93,13 @@ cartContent.addEventListener("click", (e) => {
     }
 
     if (target.classList.contains("btn-remove")) {
-        removeFromCart(id);
-        renderCart();
+        showAlert("¿Estás seguro que quieres eliminar este producto del carrito?", [
+            { label: "Cancelar", callback: () => {} },
+            { label: "Eliminar", callback: () => {
+                removeFromCart(id);
+                renderCart();
+            }}
+        ]);
     }
 });
 
