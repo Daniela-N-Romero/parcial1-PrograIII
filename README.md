@@ -53,9 +53,7 @@ Solo Clientes: El formulario de registro está diseñado exclusivamente para la 
 
 Para facilitar las pruebas de la plataforma, el sistema cuenta con un SeedAdmin que se inicializa automáticamente en el primer acceso. No es necesario registrarse para probar el rol de administrador. 
 
-- Credenciales de Admin:
-Email: admin@foodstore.com
-Password: password123 
+- Credenciales de Admin:   Email: admin@test.com   Password: password123 
 
 - Funcionamiento: Al cargar el proyecto, una función verifica si el administrador ya existe en el localStorage. De no ser así, lo crea automáticamente para permitir el acceso a las rutas protegidas de gestión.
 
